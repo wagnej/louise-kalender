@@ -1,8 +1,11 @@
-Background music for the lock screen:
+Audio files are NOT in the public GitHub repo.
 
-  fairytale-of-new-york.m4a
+They live in the private repo: wagnej/louise-kalender-assets
+and are copied in during the GitHub Pages build.
 
-Configured in src/config/calendar.ts → lock.musicSrc
+For local development, put files here (gitignored):
+  fairytale-of-new-york.m4a  → lock.musicSrc in calendar.ts
+  whistle.m4a                → day 3 songClip game
 
-Note: This is copyrighted music. Prefer a private GitHub repo
-if you deploy with this file included.
+Before 1 December: add the .m4a files to louise-kalender-assets,
+push, then re-run Deploy on louise-kalender (or push any commit).

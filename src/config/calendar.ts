@@ -27,7 +27,7 @@ export const calendarConfig: CalendarConfig = {
 
   lock: {
     // Change this to whatever password Louise should type
-    password: 'godjul',
+    password: 'lollojojjo',
     // Audio file lives in public/audio/
     musicSrc: '/audio/fairytale-of-new-york.m4a',
     musicVolume: 0.45,

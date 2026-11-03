@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# Copyrighted / private audio — kept in wagnej/louise-kalender-assets
+public/audio/*.m4a
+public/audio/*.mp3
+public/audio/*.wav
+public/audio/*.ogg
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

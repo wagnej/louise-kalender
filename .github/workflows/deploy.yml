@@ -1,10 +1,12 @@
 # Builds the site and publishes it to GitHub Pages on every push to main.
+# Audio is pulled from the private repo wagnej/louise-kalender-assets at build time
+# (so songs stay out of the public source repo).
 name: Deploy to GitHub Pages
 
 on:
   push:
     branches: [main]
-  workflow_dispatch: # allows manual "Run workflow" from the Actions tab
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -22,6 +24,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Fetch private audio assets
+        uses: actions/checkout@v4
+        with:
+          repository: wagnej/louise-kalender-assets
+          token: ${{ secrets.ASSETS_TOKEN }}
+          path: _assets
+
+      - name: Copy audio into public/
+        run: |
+          mkdir -p public/audio
+          cp -R _assets/audio/. public/audio/
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -32,8 +46,6 @@ jobs:
         run: npm ci
 
       - name: Build
-        # GITHUB_REPOSITORY is available automatically (owner/repo).
-        # vite.config.ts uses it to set the correct base path.
         run: npm run build
 
       - name: Upload artifact
